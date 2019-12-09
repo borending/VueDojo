@@ -1,0 +1,131 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+}
+
+@section scripts{
+    <script>
+
+        var app = new Vue({
+            el: '#app1', // 設定要轉變成Vue 物件的元素
+            data: { //  物件的定義
+                message: 'Hello Vue!'
+            }
+        })
+
+        var app2 = new Vue({
+            el: '#app2',
+            data: {
+                message: 'Hello Vue!'
+            }
+        })
+
+        var app3 = new Vue({
+            el: '#app3',
+            data: {
+                shown: true
+            }
+        })
+
+        var app4 = new Vue({
+            el: '#app4',
+            data: {
+                items: [
+                    { name: 'Apple' },
+                    { name: 'Banana' },
+                    { name: 'Cookie' },
+                    { name: 'Duck' },
+                    { name: 'Eat' }
+                ]
+            }
+        })
+
+        var app5 = new Vue({
+            el: '#app5',
+            data: {
+                message: new Date().toLocaleString()
+            },
+            methods: {
+                getDateTimeNow: function () {
+                    this.message = new Date().toLocaleString()
+                }
+            }
+        })
+
+        var app6 = new Vue({
+            el: '#app6',
+            data: {
+                message: "Please type some text..."
+            }
+        })
+
+    </script>
+}
+
+<p>
+    // 架構<br />
+    var app = new Vue({&emsp;//  宣告為Vue 的物件<br />
+    &emsp;el: '#app1',&emsp;// 設定要轉變成Vue 物件的元素，類似jquery selector<br />
+    &emsp;data: {&emsp;//  物件的屬性定義<br />
+    &emsp;&emsp;message: 'Hello Vue!',&emsp;// string<br />
+    &emsp;&emsp;items: [],&emsp;// array<br />
+    &emsp;&emsp;shown: true,&emsp;// boolean<br />
+    &emsp;}<br />
+    &emsp;methods:{&emsp;// 宣告方法<br />
+    &emsp;&emsp;methodName: function(){}<br />
+    &emsp;}<br />
+    })<br />
+</p>
+<br />
+
+<h4>
+    基本應用
+</h4>
+<div id="app1">
+    {{message}}
+</div>
+<br />
+
+<h4>
+    使用v-bind指定tag 屬性
+</h4>
+<div id="app2">
+    <span v-bind:title="message">Hover me</span>
+</div>
+<br />
+
+<h4>
+    條件 v-if
+</h4>
+<div id="app3">
+    <p v-if="shown">Now you see me.</p>
+</div>
+<br />
+
+<h4>
+    循環 v-for
+</h4>
+<div id="app4">
+    <p v-for="item in items">
+        {{item.name}}
+    </p>
+</div>
+<br />
+
+<h4>
+    User Input
+</h4>
+<div id="app5">
+    <p>{{message}}</p>
+    <button v-on:click="getDateTimeNow">取得現在時間</button>
+</div>
+<br />
+
+<h4>
+    與控制項綁定屬性 v-model
+</h4>
+<div id="app6">
+    <p>{{message}}</p>
+    <input v-model="message" />
+</div>
+<br />
